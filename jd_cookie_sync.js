@@ -523,12 +523,14 @@ async function syncToQinglong(cookie, ptPin) {
     try {
         const headers = $request.headers;
 
-        // 只处理京东主App的请求
-        const userAgent = headers['User-Agent'] || headers['user-agent'] || '';
-        if (!userAgent.startsWith('JD4iPhone')) {
-            $.done({});
-            return;
-        }
+        // 只处理京东相关请求（App 或网页版）
+const userAgent = headers['User-Agent'] || headers['user-agent'] || '';
+const isJdApp = userAgent.startsWith('JD4iPhone');
+const isBrowser = /Mozilla|Chrome|Safari|Firefox|Edge/i.test(userAgent);
+if (!isJdApp && !isBrowser) {
+    $.done({});
+    return;
+}
 
         // 提取并验证 Cookie
         const cookieResult = extractCookie(headers);
