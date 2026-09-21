@@ -65,10 +65,7 @@ function validateConfig(config) {
  * 从请求头提取并验证 Cookie
  */
 function extractCookie(headers) {
-    console.log("=== 提取检查 ===");
-    console.log("Cookie长度: " + (cookieHeader ? cookieHeader.length : 0));
-    console.log("是否包含pt_key: " + (cookieHeader ? cookieHeader.includes("pt_key") : false));
-    console.log("是否包含pt_pin: " + (cookieHeader ? cookieHeader.includes("pt_pin") : false));
+    
     const cookieHeader = headers['Cookie'] || headers['cookie'];
 
     if (!cookieHeader) {
@@ -92,7 +89,7 @@ function extractCookie(headers) {
     if (ptKey.startsWith('fake_') || ptPin.toLowerCase() === 'guest') {
         return { valid: false, message: 'Guest cookie detected, skipping sync' };
     }
-console.log("提取成功: pt_key长度=" + ptKey.length + ", pt_pin=" + ptPin);
+
     return {
         valid: true,
         cookie: `pt_key=${ptKey};pt_pin=${ptPin};`,
