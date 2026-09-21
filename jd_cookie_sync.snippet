@@ -4,4 +4,4 @@
 
 hostname = api.m.jd.com
 
-^https?:\/\/(api|in)\.m\.jd\.com\/client\.action\?functionId=(getJDUserInfoUnion|queryJDUserInfo|myHomeV2|home|wareBusiness|basicConfig) url script-request-header https://raw.githubusercontent.com/conversun/jd_surge/main/jd_cookie_sync.js
+^https?:\/\/api\.m\.jd\.com\/(client\.action|api)\?.*functionId=(getJDUserInfoUnion|queryJDUserInfo|myHomeV2|home|wareBusiness|basicConfig|pingou_webmonitor_biz) url script-request-header https://raw.githubusercontent.com/conversun/jd_surge/main/jd_cookie_sync.js
